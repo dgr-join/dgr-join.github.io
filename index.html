@@ -6,14 +6,16 @@
 </head>
 <body>
     <script>
-        var currentUrl = window.location.href;
-        var urlSegments = currentUrl.split('/');
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
         
-        var username = urlSegments[3];
-        var path = urlSegments.slice(4).join('/');
+        var lobby = urlParams.get('lobby');
+        var user = urlParams.get('user');
         
-        var newUrl = 'steam://joinlobby/312530/' + path;
+        var newUrl = 'steam://joinlobby/312530/' + lobby + '/' + user;
+        
         window.location.href = newUrl;
+        window.close();
     </script>
 </body>
 </html>
